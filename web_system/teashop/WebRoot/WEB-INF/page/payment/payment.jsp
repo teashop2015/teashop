@@ -94,23 +94,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</form>
 			<div class="disabled-phases">
 				<div class="phase-title">
-					<h1><a href="checkout-4.html">4.Account and billing details</a></h1>
+					<h1><a href="../account/account.page">4.Account and billing details</a></h1>
 				</div>
 				<div class="phase-title">
-					<h1><a href="checkout-5.html">5.Confirm orders</a></h1>
+					<h1><a href="../confirm/confirm.page">5.Confirm orders</a></h1>
 				</div>
 			</div>
 		</div>
 	</section>
 	<jsp:include page="../foot.jsp"></jsp:include>
 </div>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>
-<script src="../css/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/css_browser_selector.js"></script>
-<script src="../js/jquery.icheck.min.js"></script>
-<script type="text/javascript" src="../js/twitter-bootstrap-hover-dropdown.min.js"></script>
-<script type="text/javascript" src="../js/jquery.easing-1.3.js"></script>
-<script type="text/javascript" src="../js/jquery.validate.js"></script>
-<script type="text/javascript" src="../js/bootstrap-slider.js"></script>
-<script type="text/javascript" src="../js/script.js"></script>	
+

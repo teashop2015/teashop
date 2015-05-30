@@ -4,15 +4,10 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
-<script>
 
 </script>
 
 <html>
-    <head>
-        <title></title>
-    </head>
     <body>
         <div class="wrapper">
         <jsp:include page="../head.jsp"></jsp:include>
@@ -153,17 +148,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="disabled-phases">
                     <div class="phase-title">
                         <h1>
-                            <a href="checkout-3.html">3.Payment methods</a>
+                            <a href="../payment/payment.page">3.Payment methods</a>
                         </h1>
                     </div>
                     <div class="phase-title">
                         <h1>
-                            <a href="checkout-4.html">4.Account and billing details</a>
+                            <a href="../account/account.page">4.Account and billing details</a>
                         </h1>
                     </div>
                     <div class="phase-title">
                         <h1>
-                            <a href="checkout-5.html">5.Confirm orders</a>
+                            <a href="../confirm/confirm.page">5.Confirm orders</a>
                         </h1>
                     </div>
                 </div>

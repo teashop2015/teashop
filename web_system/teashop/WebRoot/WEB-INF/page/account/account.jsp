@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            12411 New York
 	        </div>
 		    </div>
-		    <a class="cusmo-btn narrow" href="checkout-3.html">modify</a>
+		    <a class="cusmo-btn narrow" href="../payment/payment.page">modify</a>
 	    </div>
     </div>
     <div class="span4">
@@ -75,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			        12411 New York
 			    </div>
 		    </div>
-		    <a class="cusmo-btn narrow" href="checkout-3.html">modify</a>
+		    <a class="cusmo-btn narrow" href="../payment/payment.page">modify</a>
 	    </div>
  	</div>
  	<div class="span4">
@@ -85,7 +85,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		        <div><span>payment:</span> paypal</div>
 		        <div><span>shipping:</span> courier</div>
 		    </div>
-		    <a class="cusmo-btn narrow" href="checkout-3.html">modify</a>
+		    <a class="cusmo-btn narrow" href="../payment/payment.page">modify</a>
 	    </div>
     </div>
 	</div>
@@ -173,7 +173,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      </tbody>
      </table>
 	 <div class="buttons-holder">
-		 <a class="cusmo-btn narrow gray" href="checkout-3.html" >back</a>
+		 <a class="cusmo-btn narrow gray" href="../payment/payment.page" >back</a>
 		 <button class="cusmo-btn narrow " type="submit" >continue</button>
 	 </div>
     </div>
@@ -181,7 +181,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
     <div class="disabled-phases">
 	    <div class="phase-title">
-	    	<h1><a href="checkout-5.html">5.Confirm orders</a></h1>
+	    	<h1><a href="../confirm/confirm.page">5.Confirm orders</a></h1>
 	    </div>
     </div>
     </section>

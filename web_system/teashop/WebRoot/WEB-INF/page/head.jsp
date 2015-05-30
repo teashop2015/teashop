@@ -9,35 +9,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 <head>
 
-<!--[if lt IE 9]>
-<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<title>Cosmetic - Modern Beauty Shop Template</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,500,700,600,800' rel='stylesheet' type='text/css'>
 <link href="../css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link href="../css/icheck/minimal/yellow.css" rel="stylesheet">
-<link href="../css/flexslider.css" rel="stylesheet">
 <link  rel="stylesheet" href="../css/style.css">
+<link href='http://fonts.googleapis.com/css?family=Raleway:400,500,700,600,800' rel='stylesheet' type='text/css'>
+<!-- <link href="../css/flexslider.css" rel="stylesheet"> -->
+
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
 <!--[if IE 7]>
-
 <link href="../css/font-awesome/css/font-awesome-ie7.min.css" rel="stylesheet">
-
 <![endif]-->
-<link  rel="stylesheet" href="../css/style.css">
-<script src="../css/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="../js/css_browser_selector.js"></script>
-<script src="../js/jquery.icheck.min.js"></script>
-<script type="text/javascript" src="../js/twitter-bootstrap-hover-dropdown.min.js"></script>
-<script type="text/javascript" src="../js/jquery.easing-1.3.js"></script>
-<script type="text/javascript" src="../js/jquery.validate.js"></script>
-<script type="text/javascript" src="../js/bootstrap-slider.js"></script>
-<script type="text/javascript" src="../js/script.js"></script>
-<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
-<script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>
-<script type="text/javascript" src="../js/jquery.flexslider-min.js"></script>
+
+
+<link href="../css/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="../css/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="../css/chosen.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../css/style.css" type="text/css">
+
+
+
+
 </head>
 <body>
 <section class="section-head">

@@ -193,8 +193,8 @@ if($('#write-review-text').length>0){
 
     if ($('.star').length > 0) {
         $('.star').raty({
-            starOff: 'images/star-off.png',
-            starOn: 'images/star-on.png',
+            starOff: '../images/star-off.png',
+            starOn: '../images/star-on.png',
             score: function() {
                 return $(this).attr('data-score');
             }

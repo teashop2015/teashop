@@ -9,7 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <body>
 <script language='javascript'>
 
-document.location = 'user/toLoginPage.do';
+document.location = 'home/home.page';
 
 </script>
 </body>

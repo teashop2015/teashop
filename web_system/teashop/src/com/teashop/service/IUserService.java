@@ -4,6 +4,8 @@ import java.util.Map;
 
 public interface IUserService {
 	
-	boolean login(Map map);
+	boolean login(Map<String, String> map);
+
+	void regUser(Map<String, String> requestMap);
 
 }

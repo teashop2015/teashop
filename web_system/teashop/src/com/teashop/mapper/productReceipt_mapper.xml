@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.teashop.mapper.IProductReceiptMapper">
+
+
+	<!-- id和mapper接口中的方法名对应，resultType使用mybatis.xml中的别名 -->
+	<select id="getProductReceiptList" parameterType="Map" resultType="Map">
+		select * from tea_product_receipt t where t.user_name = #{username}
+    </select>
+
+	
+	<insert id="saveProductReceipt" parameterType="Map" >
+	 insert into tea_product_receipt
+		(id,user_name,sendto,detail_address,contact_phone,remark,create_date)
+		values 
+		(
+		 #{id},
+		 #{username},
+		 #{sendto},
+		 #{detail_address},
+		 #{contact_phone},
+		 #{remark},
+		 now()
+		)
+	
+	</insert>
+	
+	<delete id="delProductReceipt" parameterType="Map">
+	 	delete from tea_product_receipt  where id = #{id}
+	</delete>
+	
+	<update id="updateProductReceiptChoose" parameterType="Map">
+		update tea_product_receipt  set isChoosed = 'Y' , isDefault = 'Y' 
+		where id = #{id} and user_name = #{username}
+	</update>
+	<update id="updateProductReceiptOtherNotChoose" parameterType="Map">
+		update tea_product_receipt  set isChoosed = 'N' , isDefault = 'N' 
+		where id != #{id} and user_name = #{username} 
+	</update>
+
+</mapper>

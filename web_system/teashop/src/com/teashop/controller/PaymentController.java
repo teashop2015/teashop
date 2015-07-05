@@ -20,7 +20,7 @@ import com.teashop.service.IUserService;
  
 /**
  * <b>function:</b> FreeMarker示例控制器
- * @author hoojo
+ * @author vivi
  * @createDate 2011-3-3 下午04:50:10
  * @file HelloWorldController.java
  * @package com.hoo.controller
@@ -33,7 +33,7 @@ public class PaymentController {
 	
     @RequestMapping("/payment.page")
     public String toLoginPage(ModelMap map,HttpServletRequest request,HttpServletResponse response) {
-        return "payment/payment";
+        return "payment";
     }
     
  

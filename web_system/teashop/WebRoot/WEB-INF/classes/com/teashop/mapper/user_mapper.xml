@@ -3,13 +3,17 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="com.hoo.mapper.LoginMapper">
+<mapper namespace="com.teashop.mapper.UserMapper">
 
 
 	<!-- id和mapper接口中的方法名对应，resultType使用mybatis.xml中的别名 -->
 	<select id="getUser" parameterType="Map" resultType="Map">
-		select t.username,t.password from user t where t.username = #{username} and password =  #{password} 
+		select t.username,t.password from tea_user t where t.username = #{username} and t.password =  #{password} 
     </select>
 
+	<insert id="regUser" parameterType="HashMap">
+	  insert into tea_user (username,password,createdate,updatedate) values
+	  					   (#{reg_username},#{reg_password},now(),now())
+	</insert>
 
 </mapper>

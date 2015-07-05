@@ -17,6 +17,11 @@ public class UserDao implements IUserDao {
 	public Map getUser(Map map) {
 		return userMapper.getUser(map);
 	}
+
+	public void regUser(Map<String, String> requestMap) {
+
+		userMapper.regUser(requestMap);
+	}
 	
 	
 

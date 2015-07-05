@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.teashop.mapper.IShopCartMapper">
+
+
+	<!-- id和mapper接口中的方法名对应，resultType使用mybatis.xml中的别名 -->
+	<insert id="saveCart" parameterType="Map" >
+	  INSERT INTO tea_shopcart
+		   (user_name,product_id)
+		VALUES
+		   (#{username},#{productid})
+	</insert>
+
+
+    <select id="searchCartInfoList" parameterType="Map" resultType="Map">
+		    select p.id,
+		    	   p.name,
+			       pp.path,
+			       p.price,
+			       p.simple_des,
+			       p.detail_des,
+			       sc.count
+			from tea_shopcart sc,tea_product p,tea_product_pic pp
+			where p.id = pp.product_id 
+			and sc.product_id = p.id 
+			and pp.isDefault = 'Y' 
+			and sc.user_name = #{username}
+    </select>
+    
+    <select id="searchCartToalPay" parameterType="Map" resultType="String">
+		  select sum(p.price) as totalPay
+				from tea_shopcart sc,tea_product p,tea_product_pic pp
+				where p.id = pp.product_id 
+				and sc.product_id = p.id 
+				and pp.isDefault = 'Y' 
+				and sc.user_name = #{username}
+    </select>
+    
+    <select id="searchCartById" parameterType="Map" resultType="String">
+    	select count(1) from tea_shopcart t where t.product_id = #{productid}
+    </select>
+    
+    <update id="updateCartById" parameterType="Map" >
+    	update tea_shopcart t 
+			set t.count  = (select t2.count+1 from (select * from  tea_shopcart) t2 where t2.product_id = #{productid} )
+			where t.product_id = #{productid}
+    </update>
+    
+    <delete id="delCart" parameterType="Map">
+     	delete from tea_shopcart where user_name = #{username} and product_id = #{productid}
+    </delete>
+    
+    <update id="updateProductCount" parameterType="Map" >
+    	update tea_shopcart t set t.count = #{count} where t.product_id = #{productid}
+    </update>
+    
+    
+    
+</mapper>

@@ -1,5 +1,6 @@
 package com.teashop.service.impl;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,12 +15,16 @@ public class UserService implements IUserService {
 	@Autowired
 	private IUserDao userDao;
 
-	public boolean login(Map map) {
+	public boolean login(Map<String, String> map) {
 		
 		if (userDao.getUser(map) != null) {
 			return true;
 		}
 		return false;
+	}
+
+	public void regUser(Map<String, String> requestMap) {
+			userDao.regUser(requestMap);
 	}
 	
 

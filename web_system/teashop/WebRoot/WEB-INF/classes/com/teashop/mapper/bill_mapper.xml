@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.teashop.mapper.IBillMapper">
+
+
+	<select id="getProductReceiptChoosed" parameterType="Map" resultType="Map">
+		select * from tea_product_receipt where user_name = #{username} and isDefault = 'Y'
+	</select>
+
+	<insert id="saveBill" parameterType="Map">
+		insert into tea_bill (id,user_name,product_receipt_id,create_date) 
+		values (#{id},#{username},#{pr_id},now())
+	</insert>
+	
+	<insert id="saveBillProduct" parameterType="Map">
+		insert into tea_bill_product (id,bill_id,product_id,product_count,create_date)
+		values (#{id},#{bill_id},#{product_id},#{product_count},now())
+	</insert>
+
+</mapper>

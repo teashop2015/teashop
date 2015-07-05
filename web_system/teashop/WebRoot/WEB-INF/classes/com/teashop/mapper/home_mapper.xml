@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.teashop.mapper.IHomeMapper">
+
+
+	<!-- id和mapper接口中的方法名对应，resultType使用mybatis.xml中的别名 -->
+	<select id="getProductList" parameterType="Map" resultType="Map">
+		select * from tea_product p,tea_product_pic pp where p.id = pp.product_id and pp.isDefault = 'Y'
+    </select>
+
+
+</mapper>

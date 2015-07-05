@@ -129,7 +129,7 @@ if($('#clients-carousel').length>0){
             $('.basket-item-count').text(nn);
         }
         if ($('.basket .basket-item').length <= 0) {
-            $('.basket .dropdown-menu').prepend("<li class='empty'>Empty</li>");
+            $('.basket .dropdown-menu').prepend("<li class='empty'>空</li>");
         }
     }
 

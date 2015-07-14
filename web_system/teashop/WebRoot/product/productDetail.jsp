@@ -32,9 +32,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <![endif]-->
         <link  rel="stylesheet" href="../css/style.css">
         
-        <script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
+        <script type="text/javascript" src="../js/jquery-1.9.0.min.js"></script>
 
+       <style>
        
+       	.tipbox{
+	    	background-color: #4DCC33;
+	    	color: white;
+	    	text-align:center;
+	    	display: none;
+	    	font-family: "Raleway"!important;
+	    	font-weight:bold;
+       }
+       </style>
 
 
     </head>
@@ -376,6 +386,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                            
 
                                             <hr>
+                                             <div class="alert tipbox" id="tipbox_${result.product.id}" ></div>
                                             <div class="price-holder">
                                                 <div class="price">
                                                     <span>￥${result.product.price }</span>
@@ -383,10 +394,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                                 </div>
                                             </div>
                                             <div class="buttons-holder">
-                                                <a class="cusmo-btn add-button" href="#">加入购物车</a>
+                                                <a class="cusmo-btn add-button" href="javascript:void(0);" onclick="addShopCart(this);" productid="${result.product.id }">加入购物车</a>
 
                                                 <a class="add-to-wishlist-btn" href="#"><i class="icon-plus"></i> 加入心愿单</a>
                                             </div>
+                                             <input type="hidden" id="hid_picpath_${result.product.id }" value="${result.product.path}"/>
+		                                    <input type="hidden" id="hid_productname_${result.product.id }" value="${result.product.name}"/>
+		                                    <input type="hidden" id="hid_productprice_${result.product.id }" value="${result.product.price}"/>
                                         </div>
 
 
@@ -543,12 +557,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </section>
 
             <div id="foot"></div>
-         
+         	<form name="toTargetPage" action="" method="post">
+		   		<input type="hidden" id="productid" name="productid" />
+		   </form>
         </div>
 
- 		<script type="text/javascript" src="../js/teashopHome.js"></script>
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>
+ 		<script type="text/javascript" src="../js/jquery-1.9.0.min.js"></script>
+     	<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+		<script type="text/javascript" src="../js/cart-cookies.js"></script>
+		<script type="text/javascript" src="../js/teashopHome.js"></script>
+		<script type="text/javascript" src="../js/cartview.js"></script>
+		<script type="text/javascript" src="../js/cart-DB.js"></script>
+		<script type="text/javascript" src="../product/js/productDetail.js"></script>
+        
+        <script src="../js/jquery-migrate-1.1.1.min.js"></script>
         <script src="../css/bootstrap/js/bootstrap.min.js"></script>
 
         <script type="text/javascript" src="../js/css_browser_selector.js"></script>

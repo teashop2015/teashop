@@ -4,7 +4,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
+<script type="text/javascript" src="../js/jquery-1.9.0.min.js"></script>
 <script>
 
 </script>
@@ -35,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         
         <![endif]-->
         <link  rel="stylesheet" href="../css/style.css">
-		<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
+		<script type="text/javascript" src="../js/jquery-1.9.0.min.js"></script>
         <script type="text/javascript" src="../bill/js/bill.js"></script>
         
         

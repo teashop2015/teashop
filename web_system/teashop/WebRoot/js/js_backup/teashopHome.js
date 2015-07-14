@@ -12,7 +12,6 @@ try{
                       + '<li><a href="../login/login.page">登录</a></li>'
                       + '<li><a href="checkout-1.html">注册</a></li>'
                       + '<li><a href="contact.html">联系</a></li>'
-                      + '<li><a href="javascript:void(0);" onclick="delCook();">退出</a></li>'
                   + '</ul>'
               + '</div>'
           + '</div>'
@@ -44,7 +43,7 @@ try{
                                   + '</a>'
                                   + '<ul class="dropdown-menu" id="simpleShopCart" >'
                                       + '<li class="checkout">'
-                                          + '<a href="javascript:void(0);" onclick="toShopCartPage(); class="cusmo-btn">结算</a>'
+                                          + '<a href="shopping-cart.html" class="cusmo-btn">结算</a>'
                                       + '</li>'
                                   + '</ul>'
                               + '</div>'
@@ -197,41 +196,25 @@ try{
 	$(document).ready(function(){
 		
 		
-//		var isLogin = false;
-//		var userName = "";
-//		$.get("../login/isLogin.do",function(data,status){			
-//			data = eval("("+data+")");
-//			if(status=="success"){		
-//				isLogin = data.isLogin;
-//				userName = data.username;
-//				
-//				var htmlHelloCaption = '您好！欢迎来到茶叶商城';
-//				var htmlHelloCaption_nologin = '您好，请先登录';
-//				if (isLogin) {
-//					$("#helloCaption").html('<span style="font-weight: bold;">'+userName + ', ' + htmlHelloCaption);
-//					
-//				} else {
-//					$("#helloCaption").html(htmlHelloCaption_nologin);
-//				}
-//				
-//			}
-//		});	
-		
+		var isLogin = false;
+		var userName = "";
+		$.get("../login/isLogin.do",function(data,status){			
+			data = eval("("+data+")");
+			if(status=="success"){		
+				isLogin = data.isLogin;
+				userName = data.username;
+				
 				var htmlHelloCaption = '您好！欢迎来到茶叶商城';
 				var htmlHelloCaption_nologin = '您好，请先登录';
-		
-				if (LoginCookie.isLogin()) {
-					var userObj = LoginCookie.getLoginInfo();
-					var userName = userObj.name;
+				if (isLogin) {
 					$("#helloCaption").html('<span style="font-weight: bold;">'+userName + ', ' + htmlHelloCaption);
-					
+					initSimpleCart();
 				} else {
 					$("#helloCaption").html(htmlHelloCaption_nologin);
 				}
-		
-		
-		
-		initSimpleCart();
+				
+			}
+		});	
 		
 	});
 		
@@ -241,61 +224,82 @@ try{
 	
 }
 
-
-function delCook() {
-	$.cookie('cartdata', null,{path:'/'});
-	$.cookie('teashop_user', null,{path:'/'});
-	alert("退出成功");
-	location.reload();
-}
 function initSimpleCart() {
-	var content = null;
-	var totalCount = null;
-	var totalPay = null;
-	if (LoginCookie.isLogin()) {
-		CartDB.initSimpleCart();
-	} else {
-		var cartdata = CartCookie.getJsonObj();
-		if (cartdata != null) {
-			content = cartdata.products;
-			totalCount = cartdata.totalCount;
-			totalPay =  cartdata.totalPay;
+	
+	$("#simpleShopCart li").each(function(){
+		$(this).remove();
+	});
+	
+	
+	$.ajaxSetup({
+		contentType : "application/x-www-form-urlencoded; charset=utf-8"
+	});
+	var url = "../shopcart/initSimpleCart.do";
+	var jsonStr = {};
+	$.post(url,jsonStr,function(data){
+		if (data.status == 'ok') {
+			$("#totalCount").html(data.totalCount);
+			$("#totalPay").html("￥"+data.totalPay);
+			
+			var content = data.content;
+			for (var i = 0;i<content.length;i++) {
+				var product_li =  '<li>'
+						            + '<div class="basket-item">'
+					                + '<div class="row-fluid" id="product_row_'+content[i].id+'">'
+					                    + '<div class="span4">'
+					                        + '<div class="thumb">'
+					                            + '<img alt="" src="..'+content[i].path+'" />'
+					                        + '</div>'
+					                    + '</div>'
+					                    + '<div class="span3">'
+					                        + '<div class="title">'+content[i].name+'</div>'
+					                        + '<div class="price">￥'+content[i].price+'</div>'
+					                    + '</div>'
+					                    + '<div  class="span3" style="padding-top:10px;">'
+					                    	+'<span class="badge" id="productCount_'+content[i].id+'">'+content[i].count+'</span>'
+					                    + '</div>'
+					                + '</div>'
+					                + '<a class="close-btn" href="#" onclick="deleteSelf(this);" productid="'+content[i].id+'"></a>'
+					            + '</div>'
+					        + '</li>';
+				$("#simpleShopCart").append(product_li);
+				
+			}
+			var check_out_li =  '<li class="checkout">'
+					            	+ '<a href="#" class="cusmo-btn" onclick="toShopCartPage();">结算</a>'
+					           + '</li>';
+			$("#simpleShopCart").append(check_out_li);
 		}
-	}
-	if (content != null) {
-		Carview.initSimpleCart(content);
-		Carview.initSimpleCartTotalCount(totalCount);
-		Carview.initSimpleCartTotalPay(totalPay);
-	}
+	});
 }
 
-
+function initSimpleCartForCountAndPay() {
+	$.ajaxSetup({
+		contentType : "application/x-www-form-urlencoded; charset=utf-8"
+	});
+	var url = "../shopcart/initSimpleCart.do";
+	var jsonStr = {};
+	$.post(url,jsonStr,function(data){
+		if (data.status == 'ok') {
+			$("#totalCount").html(data.totalCount);
+			$("#totalPay").html("￥"+data.totalPay);
+		}
+	});
+}
 
 function deleteSelf(obj) {
-	var productid = $(obj).attr("productid");
-	Carview.delSimpleCart(obj);
 	
-	if (LoginCookie.isLogin()) {
-		CartDB.delCart(obj);
-		CartDB.initSimpleCart();
-	} else {
-		CartCookie.delCartProduct(productid);
-		Carview.initSimpleCartTotalCount(CartCookie.getCartTotalCount());
-		Carview.initSimpleCartTotalPay(CartCookie.getCartTotalPay());
-	}
+	var url = "../shopcart/delCart.do"
+    var jsonStr = {};
+	jsonStr.productid = $(obj).attr("productid");
+	$.post(url,jsonStr,function(data){
+		if (data.status == 'ok') {
+			$(obj).parent().parent().remove();
+			initSimpleCartForCountAndPay();
+		} else {
+			alert("删除出错，请联系管理员");
+		}
+	});
+	
 }
-
-function toShopCartPage() {
-	
-	if (LoginCookie.isLogin()) {
-		document.toTargetPage.action = "../shopcart/shopcart.page";
-		document.toTargetPage.submit();
-	} else {
-		document.toTargetPage.action = "../login/login.page";
-		document.toTargetPage.submit();
-	}
-		
-}
-	
-
 

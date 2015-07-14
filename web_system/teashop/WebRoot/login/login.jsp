@@ -66,6 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								</div>
 								<div class="button-holder">
 									<button class="cusmo-btn narrow " type="button" onclick="login();" >登录</button>
+									<button class="cusmo-btn narrow " type="button" onclick="delCook();" >清除COOKIE</button>
 								</div>
 							</form>
 						</div>
@@ -122,13 +123,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<input type="hidden" id="hid_password" name="hid_password"/>
 		</form>
 		</div>
-		<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
+		<script type="text/javascript" src="../js/jquery-1.9.0.min.js"></script>
+     	<script type="text/javascript" src="../js/jquery.cookie.js"></script>
 		<script type="text/javascript" src="../js/teashopHome.js"></script>
-		<script type="text/javascript" src="js/login.js"></script>
+		<script type="text/javascript" src="../js/cart-cookies.js"></script>
+		<script type="text/javascript" src="../js/cartview.js"></script>
+		<script type="text/javascript" src="../js/cart-DB.js"></script>
+		<script type="text/javascript" src="../js/mergeCookieDB.js"></script>
+		<script type="text/javascript" src="../login/js/login.js"></script>
 		
 		
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-		<script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>
+		<script src="../js/jquery-migrate-1.1.1.min.js"></script>
 		<script src="../css/bootstrap/js/bootstrap.min.js"></script>
 		
 		<script type="text/javascript" src="../js/css_browser_selector.js"></script>

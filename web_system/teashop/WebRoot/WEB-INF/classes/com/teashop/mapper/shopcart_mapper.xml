@@ -9,9 +9,9 @@
 	<!-- id和mapper接口中的方法名对应，resultType使用mybatis.xml中的别名 -->
 	<insert id="saveCart" parameterType="Map" >
 	  INSERT INTO tea_shopcart
-		   (user_name,product_id)
+		   (id,user_name,product_id)
 		VALUES
-		   (#{username},#{productid})
+		   (#{id},#{username},#{productid})
 	</insert>
 
 
@@ -29,6 +29,14 @@
 			and pp.isDefault = 'Y' 
 			and sc.user_name = #{username}
     </select>
+    
+	<insert id="saveCart2" parameterType="Map" >
+	  INSERT INTO tea_shopcart
+		   (id,user_name,product_id,count)
+		VALUES
+		   (#{uuid},#{username},#{productid},#{count})
+	</insert>
+
     
     <select id="searchCartToalPay" parameterType="Map" resultType="String">
 		  select sum(p.price) as totalPay
@@ -51,6 +59,9 @@
     
     <delete id="delCart" parameterType="Map">
      	delete from tea_shopcart where user_name = #{username} and product_id = #{productid}
+    </delete>
+    <delete id="delCartAll" parameterType="Map">
+     	delete from tea_shopcart where user_name = #{username} 
     </delete>
     
     <update id="updateProductCount" parameterType="Map" >

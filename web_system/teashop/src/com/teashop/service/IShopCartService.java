@@ -17,6 +17,8 @@ public interface IShopCartService {
 	List getCartInfoList(Map paramMap) throws ServiceException;
 
 	boolean updateProductCount(Map paramMap) throws ServiceException;
+
+	boolean mergeData(Map paramMap) throws ServiceException;
 	
 
 }

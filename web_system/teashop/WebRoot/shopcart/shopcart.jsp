@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <![endif]-->
         <link  rel="stylesheet" href="../css/style.css">
 		
- 		<script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
+ 		<script type="text/javascript" src="../js/jquery-1.9.0.min.js"></script>
       	<script type="text/javascript" src="../shopcart/js/shopcart.js"></script>
 		
 
@@ -140,9 +140,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </body>
        
 	
+     	<script type="text/javascript" src="../js/jquery.cookie.js"></script>
 		<script type="text/javascript" src="../js/teashopHome.js"></script>
+		<script type="text/javascript" src="../js/cart-cookies.js"></script>
+		<script type="text/javascript" src="../js/cartview.js"></script>
+		<script type="text/javascript" src="../js/cart-DB.js"></script>
+		<script type="text/javascript" src="../js/mergeCookieDB.js"></script>
 		
-        <script src="http://code.jquery.com/jquery-migrate-1.1.1.min.js"></script>
+        <script src="../js/jquery-migrate-1.1.1.min.js"></script>
         <script src="../css/bootstrap/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="../js/css_browser_selector.js"></script>
 

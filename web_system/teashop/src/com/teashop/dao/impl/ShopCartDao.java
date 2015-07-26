@@ -44,5 +44,13 @@ public class ShopCartDao implements IShopCartDao{
 	public int updateProductCount(Map paramMap) throws DaoException {
 		 return shopCartMapper.updateProductCount(paramMap);
 	}
+	public int saveCart2(Map paramMap) throws DaoException {
+		return shopCartMapper.saveCart2(paramMap);
+		
+	}
+	public Integer delCartAll(Map paramMap) throws DaoException {
+		return shopCartMapper.delCartAll(paramMap);
+		
+	}
 
 }

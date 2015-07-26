@@ -22,4 +22,8 @@ public interface IShopCartDao {
 
 	int updateProductCount(Map paramMap) throws DaoException;
 
+	int saveCart2(Map paramMap) throws DaoException;
+
+	Integer delCartAll(Map paramMap)  throws DaoException;
+
 }

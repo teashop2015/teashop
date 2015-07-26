@@ -158,7 +158,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
            </form>
         </div>
     </body>
-	    <script type="text/javascript" src="../js/jquery-1.11.2.js"></script>
+	    <script type="text/javascript" src="../js/jquery-1.9.0.min.js"></script>
 		<script type="text/javascript" src="../js/teashopHome.js"></script>
 		<script type="text/javascript" src="../productReceipt/js/productReceipt.js"></script>
       

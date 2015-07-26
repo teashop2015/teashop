@@ -17,14 +17,33 @@ function login() {
 			if (data.status == 'ok') {
 				$("#hid_username").val(username);
 				$("#hid_password").val(password);
+				var userObj = {};
+				userObj.name = username;
+				userObj.password = password;
 				
-				document.toTargetPage.action = "../home/home.page"
-				document.toTargetPage.submit();
+				LoginCookie.setLoginInfo(userObj);
+				
+				var url2 = "../shopcart/mergeData.do";
+				var jsonStr2 = {};
+				jsonStr2.cookdata = CartCookie.getCookieData();
+				$.post(url2,jsonStr2,function(data){
+					
+					CartCookie.clearCookie();
+					
+					document.toTargetPage.action = "../home/home.page"
+					document.toTargetPage.submit();
+				})
+				
 			} else {
 				alert("登录失败，用户名或密码错误！");
 			}
 		}
 	});
+}
+
+function delCook() {
+	$.cookie('cartdata', null);
+	$.cookie('teashop_user', null);
 }
 
 

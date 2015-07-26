@@ -1,0 +1,46 @@
+<!DOCTYPE >
+<html>
+  <head>
+    <title>test1.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	
+	<script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	
+	
+	<script type="text/javascript">
+		
+	function test() {
+		$.cookie('test2',$("#test").val(), {expires: 7, path: '/'});
+		alert("已存储COOKIE");
+	
+	}
+		
+	function test2() {
+		location.href = "test2.html";
+	}
+	
+	function test3() {
+		$.cookie('test2',null,{path:'/'});
+		alert("清除cookie");
+	}
+	
+	function test4() {
+		alert('cookie:'+$.cookie('test2'));
+	}
+	</script>
+  </head>
+  
+  <body>
+   <input type="text" id="test" />
+   <button value="test" onclick="test();">test</button>
+   <button value="test" onclick="test4();">viewcookie</button>
+   <button value="goto_test2" onclick="test2();">goto_test2</button>
+   <button value="clearcookie" onclick="test3();">clearcookie</button>
+  </body>
+</html>

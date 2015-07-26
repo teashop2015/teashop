@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.teashop.exception.ServiceException;
 import com.teashop.service.IShopCartService;
+import com.teashop.util.UUIDutil;
 
 
  
@@ -68,6 +69,7 @@ public class ShopCartController {
     	Map paramMap = new HashMap();
     	paramMap.put("productid", productid);
     	paramMap.put("username", session.getAttribute("userName").toString());
+    	paramMap.put("id", UUIDutil.getUUid());
     	String resultStr =  "";
     	try {
 			if (shopCartService.saveCart(paramMap)) {
@@ -128,6 +130,26 @@ public class ShopCartController {
     	String resultStr =  "";
     	try {
     		if (shopCartService.updateProductCount(paramMap)) {
+    			resultStr = "{\"status\":\"ok\"}";
+    		} else {
+    			resultStr = "{\"status\":\"error\"}";
+    		}
+    	} catch (ServiceException e) {
+    		e.printStackTrace();
+    	}
+    	return resultStr;
+    	
+    }
+    
+    @RequestMapping(value="/mergeData.do",method = RequestMethod.POST, produces="text/json;charset=UTF-8")
+    public @ResponseBody String mergeData(ModelMap map,HttpServletRequest request,HttpServletResponse response,HttpSession session) {
+    	
+    	Map paramMap = new HashMap();
+    	paramMap.put("cookdata", request.getParameter("cookdata"));
+    	paramMap.put("username", session.getAttribute("userName").toString());
+    	String resultStr =  "";
+    	try {
+    		if (shopCartService.mergeData(paramMap)) {
     			resultStr = "{\"status\":\"ok\"}";
     		} else {
     			resultStr = "{\"status\":\"error\"}";

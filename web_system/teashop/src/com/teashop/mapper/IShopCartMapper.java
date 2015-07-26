@@ -18,6 +18,10 @@ public interface IShopCartMapper {
 	Integer delCart(Map paramMap);
 
 	int updateProductCount(Map paramMap);
+	
+	int saveCart2(Map paramMap);
+
+	Integer delCartAll(Map paramMap);
 
 
 
